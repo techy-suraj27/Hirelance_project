@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HIRELANCE connects independent talent with people and teams looking for great work.">
+    <title>HIRELANCE — Find your people</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--
+        HIRELANCE PAGE
+        The navigation is fixed at the bottom of the screen so it stays
+        available while the visitor moves between sections.
+    -->
+
+    <main>
+        <!-- HOME / HERO SECTION -->
+        <section class="hero-section" id="home">
+            <div class="hero-content">
+                <p class="eyebrow"><span class="red-line"></span> THE FREELANCE NETWORK</p>
+
+                <h1 class="hero-title">HIRELANCE<span class="red-period">.</span></h1>
+
+                <p class="hero-description">
+                    A place where independent talent meets ambitious teams.
+                    Discover skilled freelancers, connect with reliable hirers,
+                    and make meaningful work happen.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#freelancers" class="button button-red">Explore talent <span>↗</span></a>
+                    <a href="#hirers" class="button button-outline">Find opportunities <span>↗</span></a>
+                </div>
+
+                <p class="hero-caption"><span class="small-red-dot"></span> A better way to work together.</p>
+            </div>
+
+            <div class="hero-bottom-note">
+                <span>INDEPENDENT BY DESIGN</span>
+                <span>EST. 2026</span>
+            </div>
+        </section>
+
+        <!-- FREELANCER SHOWCASE -->
+        <section class="content-section" id="freelancers">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">01 — THE TALENT</p>
+                    <h2>Meet this month's <span>standouts.</span></h2>
+                </div>
+                <p class="section-intro">
+                    A hand-picked look at freelancers making great work happen
+                    across design, technology, content and more.
+                </p>
+            </div>
+
+            <!-- JavaScript inserts the freelancer profile cards here. -->
+            <div class="profile-grid" id="topFreelancers"></div>
+
+            <div class="search-callout">
+                <div>
+                    <p class="eyebrow">YOUR NEXT COLLABORATOR IS OUT THERE</p>
+                    <h3>Have a project in mind?</h3>
+                    <p>Search by skill, budget or availability to find someone who fits your brief.</p>
+                </div>
+                <button class="button button-red" id="showFreelancerSearch">
+                    Find a freelancer <span>↗</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- HIRER SHOWCASE -->
+        <section class="content-section hirer-section" id="hirers">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">02 — THE OPPORTUNITIES</p>
+                    <h2>Meet the people <span>building things.</span></h2>
+                </div>
+                <p class="section-intro">
+                    Discover active hirers and teams who value good work,
+                    clear communication and creative collaboration.
+                </p>
+            </div>
+
+            <!-- JavaScript inserts the hirer profile cards here. -->
+            <div class="profile-grid" id="topHirers"></div>
+
+            <div class="search-callout light-callout">
+                <div>
+                    <p class="eyebrow">LOOKING FOR YOUR NEXT PROJECT?</p>
+                    <h3>Find the right hirer.</h3>
+                    <p>Compare pay ranges, work types and project durations before you reach out.</p>
+                </div>
+                <button class="button button-red" id="showHirerSearch">
+                    Explore hirers <span>↗</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- FREELANCER SEARCH PAGE -->
+        <section class="search-page" id="freelancerSearchPage" hidden>
+            <div class="search-page-heading">
+                <button class="back-button" data-return-home>← Back to freelancers</button>
+                <p class="eyebrow">SEARCH / FREELANCERS</p>
+                <h2>Find your <span>person.</span></h2>
+                <p>Browse all freelancer profiles. Search by name, description or skill, then use the filters to narrow your results.</p>
+            </div>
+
+            <div class="search-layout">
+                <aside class="filter-panel">
+                    <h3>Refine results</h3>
+
+                    <label for="freelancerMinPrice">Minimum price (₹ / project)</label>
+                    <input type="number" id="freelancerMinPrice" min="0" placeholder="0">
+
+                    <label for="freelancerMaxPrice">Maximum price (₹ / project)</label>
+                    <input type="number" id="freelancerMaxPrice" min="0" placeholder="Any">
+
+                    <label for="freelancerSkill">Skill</label>
+                    <select id="freelancerSkill">
+                        <option value="">All skills</option>
+                        <option>Graphic Design</option>
+                        <option>Web Development</option>
+                        <option>Video Editing</option>
+                        <option>Content Writing</option>
+                        <option>Animation</option>
+                        <option>UI/UX Design</option>
+                        <option>Photography</option>
+                    </select>
+
+                    <label for="freelancerTime">Hiring timeline</label>
+                    <select id="freelancerTime">
+                        <option value="">Any timeline</option>
+                        <option>Immediately</option>
+                        <option>Within a week</option>
+                        <option>Within two weeks</option>
+                        <option>Flexible</option>
+                    </select>
+
+                    <button class="button button-outline reset-button" id="resetFreelancerFilters">
+                        Reset filters
+                    </button>
+                </aside>
+
+                <div class="search-results-area">
+                    <div class="search-input-box">
+                        <span>⌕</span>
+                        <input type="search" id="freelancerSearchInput"
+                               placeholder="Search freelancers by name, skill or description...">
+                    </div>
+                    <div class="results-toolbar"><p class="result-count" id="freelancerResultCount"></p><button type="button" class="show-all-button" id="showAllFreelancers">Show all 20</button></div>
+                    <div class="result-list" id="freelancerSearchResults"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIRER SEARCH PAGE -->
+        <section class="search-page" id="hirerSearchPage" hidden>
+            <div class="search-page-heading">
+                <button class="back-button" data-return-home>← Back to hirers</button>
+                <p class="eyebrow">SEARCH / HIRERS</p>
+                <h2>Find your next <span>project.</span></h2>
+                <p>Browse all hirer profiles. Compare paycheck, duration and work type to find a suitable opportunity.</p>
+            </div>
+
+            <div class="search-layout">
+                <aside class="filter-panel">
+                    <h3>Refine opportunities</h3>
+
+                    <label for="hirerMinPay">Minimum paycheck (₹)</label>
+                    <input type="number" id="hirerMinPay" min="0" placeholder="0">
+
+                    <label for="hirerMaxPay">Maximum paycheck (₹)</label>
+                    <input type="number" id="hirerMaxPay" min="0" placeholder="Any">
+
+                    <label for="hirerDuration">Work duration</label>
+                    <select id="hirerDuration">
+                        <option value="">Any duration</option>
+                        <option>Short-term</option>
+                        <option>1–2 weeks</option>
+                        <option>1 month</option>
+                        <option>Long-term</option>
+                    </select>
+
+                    <label for="hirerWorkType">Type of work</label>
+                    <select id="hirerWorkType">
+                        <option value="">All work types</option>
+                        <option>Remote</option>
+                        <option>On-site</option>
+                        <option>Hybrid</option>
+                        <option>Project-based</option>
+                    </select>
+
+                    <button class="button button-outline reset-button" id="resetHirerFilters">
+                        Reset filters
+                    </button>
+                </aside>
+
+                <div class="search-results-area">
+                    <div class="search-input-box">
+                        <span>⌕</span>
+                        <input type="search" id="hirerSearchInput"
+                               placeholder="Search hirers by name, role or project description...">
+                    </div>
+                    <div class="results-toolbar"><p class="result-count" id="hirerResultCount"></p><button type="button" class="show-all-button" id="showAllHirers">Show all 15</button></div>
+                    <div class="result-list" id="hirerSearchResults"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="about-section" id="about">
+            <div class="about-heading">
+                <div>
+                    <p class="eyebrow">03 — WHO WE ARE</p>
+                    <h2>A platform<br>for <span>creative minds.</span></h2>
+                </div>
+                <p>
+                    HIRELANCE is built around a simple belief: great work happens
+                    when the right people find each other. We aim to make
+                    discovering talent and finding meaningful projects more
+                    straightforward, transparent and accessible.
+                </p>
+            </div>
+
+            <div class="about-columns">
+                <div>
+                    <p class="eyebrow">THE FOUNDERS</p>
+                    <h3>Built by people<br>who believe in good work.</h3>
+                    <p class="muted-text">This great website is formulated by two students of DDUC<br>
+                                          Kalpantak and Suraj for representational purposes of <br>
+                                          FrontEnd development</p>
+                </div>
+
+                <div>
+                    <p class="eyebrow">TRUST & CREDENTIALS</p>
+                    <h3>Quality. Clarity.<br>Accountability.</h3>
+                    <p class="muted-text">Trusted by private firms, studios and companies across the globe.</p>
+                </div>
+
+                <div>
+                    <p class="eyebrow">GET IN TOUCH</p>
+                    <h3>Let's start<br>a conversation.</h3>
+                    <a class="contact-link" href="mailto:hello@hirelance.example">hirelanceatwork@gmail.com ↗</a>
+                    <p class="muted-text">4th floor Computer Science Department Deen Dayal Upadhaya College<br>
+                                           Dwarka Sector - 03, New Delhi, India</p>
+                </div>
+            </div>
+
+            <div class="copyright-line">
+                <span>© 2026 HIRELANCE</span>
+                <span>ALL RIGHTS RESERVED.</span>
+            </div>
+        </section>
+    </main>
+
+    <!--
+        FIXED BOTTOM NAVIGATION
+        This navigation remains visible while the user scrolls.
+    -->
+    <footer class="bottom-navigation">
+        <a class="footer-brand" href="#home">
+            <span class="brand-symbol">H</span>
+            <span>HIRELANCE</span>
+        </a>
+
+        <nav class="footer-nav" aria-label="Main navigation">
+            <a href="#home" class="footer-nav-link active">Home</a>
+            <a href="#freelancers" class="footer-nav-link">Freelancers</a>
+            <a href="#hirers" class="footer-nav-link">Hirers</a>
+            <a href="#about" class="footer-nav-link">About</a>
+        </nav>
+
+        <button class="button button-red footer-signup" id="openSignup">
+            Login / Sign up
+        </button>
+    </footer>
+
+    <!-- SIGNUP MODAL -->
+    <div class="modal-overlay" id="signupModal" hidden>
+        <div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+            <button class="modal-close" id="closeSignup" aria-label="Close signup form">×</button>
+
+            <p class="eyebrow">JOIN THE HIRELANCE NETWORK</p>
+            <h2 id="signupTitle">Create your <span>account.</span></h2>
+            <p class="form-intro">Choose how you want to use HIRELANCE.</p>
+
+            <div class="account-type-switch">
+                <button type="button" class="account-type-button selected" data-account-type="freelancer">
+                    Freelancer
+                </button>
+                <button type="button" class="account-type-button" data-account-type="hirer">
+                    Hirer
+                </button>
+            </div>
+
+            <!-- FREELANCER REGISTRATION FORM -->
+            <form id="freelancerSignupForm" class="signup-form">
+                <h3>Freelancer details</h3>
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="freelancerName">Full name *</label>
+                        <input type="text" id="freelancerName" name="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerAge">Age *</label>
+                        <input type="number" id="freelancerAge" name="age" min="18" required placeholder="Your age">
+                    </div>
+
+                    <div class="form-field full-width">
+                        <label for="freelancerAddress">Address *</label>
+                        <textarea id="freelancerAddress" name="address" rows="2" required placeholder="Your residential address"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerEmail">Email address *</label>
+                        <input type="email" id="freelancerEmail" name="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerPhone">Contact number *</label>
+                        <input type="tel" id="freelancerPhone" name="phone" required placeholder="+91 00000 00000">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerInstagram">Instagram link</label>
+                        <input type="url" id="freelancerInstagram" name="instagram" placeholder="https://instagram.com/...">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerPortfolio">Portfolio link</label>
+                        <input type="url" id="freelancerPortfolio" name="portfolio" placeholder="https://...">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerLinkedin">LinkedIn link</label>
+                        <input type="url" id="freelancerLinkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="freelancerExperience">Experience</label>
+                        <input type="text" id="freelancerExperience" name="experience" placeholder="e.g. 2 years / Beginner">
+                    </div>
+                </div>
+
+                <fieldset class="skills-fieldset">
+                    <legend>Select your skills (you can choose multiple)</legend>
+                    <div class="skills-checkbox-grid">
+                        <label><input type="checkbox" name="freelancerSkills" value="Graphic Design"> Graphic Design</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="Web Development"> Web Development</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="Video Editing"> Video Editing</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="Content Writing"> Content Writing</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="Animation"> Animation</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="UI/UX Design"> UI/UX Design</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="Photography"> Photography</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="VFX"> VFX</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="Social Media"> Social Media</label>
+                        <label><input type="checkbox" name="freelancerSkills" value="3D Modelling"> 3D Modelling</label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="button button-red submit-form-button">Create freelancer account</button>
+            </form>
+
+            <!-- HIRER REGISTRATION FORM -->
+            <form id="hirerSignupForm" class="signup-form" hidden>
+                <h3>Hirer details</h3>
+
+                <div class="form-field">
+                    <label for="hirerName">Full name *</label>
+                    <input type="text" id="hirerName" name="name" required placeholder="Your full name">
+                </div>
+
+                <fieldset class="usage-fieldset">
+                    <legend>How will you use HIRELANCE? *</legend>
+                    <label><input type="radio" name="hirerUsage" value="Personal" required> Personal</label>
+                    <label><input type="radio" name="hirerUsage" value="Firm"> Firm</label>
+                    <label><input type="radio" name="hirerUsage" value="Company"> Company</label>
+                </fieldset>
+
+                <div class="form-field">
+                    <label for="hirerAddress">Address *</label>
+                    <textarea id="hirerAddress" name="address" rows="3" required placeholder="Enter your address"></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label for="hirerEmail">Email address *</label>
+                    <input type="email" id="hirerEmail" name="email" required placeholder="name@example.com">
+                </div>
+
+                <div class="form-field" id="companyCertificateField">
+                    <label for="hirerCertificate">Company / firm certificate (if any)</label>
+                    <input type="file" id="hirerCertificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png">
+                    <small>Accepted formats: PDF, JPG and PNG.</small>
+                </div>
+
+                <button type="submit" class="button button-red submit-form-button">Create hirer account</button>
+            </form>
+
+            <p class="form-message" id="formMessage">
+                Frontend demo: connect a backend to securely save account details.
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
